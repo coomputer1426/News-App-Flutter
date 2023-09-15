@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-
 
 import '../../../changenotifier/news_change_notifier.dart';
 import 'category_grid_view.dart';
-import '../category/category_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class BodyView extends StatelessWidget {
   BodyView({Key? key}) : super(key: key);
+
   // List<Category> categories = [
   //   Category(
   //       categoryID: "Sports",
@@ -81,79 +78,72 @@ class BodyView extends StatelessWidget {
     //       categoryBackground: const Color.fromARGB(255, 242, 211, 82)),
     // ];
     return Consumer<NewsChangeNotifier>(
-        builder: (context, newsproviderConsumer, child){
-
-
-          return Container(
-        constraints: const BoxConstraints.expand(),
-    decoration: imageDecoration(),
-    padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children:
-    [
-    Row(
-    children: [
-    Text(
-    // "Pick your category \n of Interest",
-    AppLocalizations.of(context)!.pick_category,
-    style: Theme.of(context).textTheme.headlineSmall,
-    textAlign: TextAlign.left,
-    ),
-    ],
-    ),
-    Expanded(
-    child: GridView.builder(
-    gridDelegate:
-    const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
-    crossAxisSpacing: 20,
-    mainAxisSpacing: 20,
-    mainAxisExtent: 170,
-    childAspectRatio: 150 / 170),
-    itemBuilder: (context, index) =>
-        // Consumer<NewsChangeNotifier>(builder: (context, newsproviderConsumer, child)=>
-        CategoryGridView(
-    onCategorySelected:
-    onCategoryClick,
-    index: index,
-    category: newsproviderConsumer.catlist[index],
-    )
-    // )
-    ,
-    itemCount: newsproviderConsumer.catlist.length,
-    padding: const
-    EdgeInsets.only(top: 20, bottom: 20, left: 20),
-    ),
-    ),
-    ]
-    )
-    );}
-    );
+        builder: (context, newsproviderConsumer, child) {
+      return Container(
+          constraints: const BoxConstraints.expand(),
+          decoration: imageDecoration(),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Row(
+              children: [
+                Text(
+                  // "Pick your category \n of Interest",
+                  AppLocalizations.of(context)!.pick_category,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    mainAxisExtent: 170,
+                    childAspectRatio: 150 / 170),
+                itemBuilder: (context, index) =>
+                    // Consumer<NewsChangeNotifier>(builder: (context, newsproviderConsumer, child)=>
+                    CategoryGridView(
+                  onCategorySelected: onCategoryClick,
+                  index: index,
+                  category: newsproviderConsumer.catlist[index],
+                )
+                // )
+                ,
+                itemCount: newsproviderConsumer.catlist.length,
+                padding: const EdgeInsets.only(top: 20, bottom: 20, left: 20),
+              ),
+            ),
+          ]));
+    });
   }
+
   void onCategoryClick(Category category, BuildContext context) {
-    var newsconsumerprovider = Provider.of<NewsChangeNotifier>(context, listen: false);
+    var newsconsumerprovider =
+        Provider.of<NewsChangeNotifier>(context, listen: false);
     newsconsumerprovider.changeSelectedWidget(category);
     newsconsumerprovider.changeBodyWidgetIndex(1);
     debugPrint("category is ${category.categoryID}");
-    newsconsumerprovider.changeAppBarTitle(appBar_Title:category.categoryTitle);
+    newsconsumerprovider.changeAppBarTitle(
+        appBar_Title: category.categoryTitle);
     newsconsumerprovider.changeActions(1);
 
-        // category.CategoryTitle=="Sports"?
-        // AppLocalizations.of(context)!.sports:
-        // category.CategoryTitle=="Science"?
-        // AppLocalizations.of(context)!.science:
-        // category.CategoryTitle=="Enviroment"?
-        // AppLocalizations.of(context)!.enviroment:
-        // category.CategoryTitle=="Health"?
-        // AppLocalizations.of(context)!.health:
-        // category.CategoryTitle=="Business"?
-        // AppLocalizations.of(context)!.business:
-        // category.CategoryTitle=="Politics"?
-        // AppLocalizations.of(context)!.politics:
-        // category.CategoryTitle);
+    // category.CategoryTitle=="Sports"?
+    // AppLocalizations.of(context)!.sports:
+    // category.CategoryTitle=="Science"?
+    // AppLocalizations.of(context)!.science:
+    // category.CategoryTitle=="Enviroment"?
+    // AppLocalizations.of(context)!.enviroment:
+    // category.CategoryTitle=="Health"?
+    // AppLocalizations.of(context)!.health:
+    // category.CategoryTitle=="Business"?
+    // AppLocalizations.of(context)!.business:
+    // category.CategoryTitle=="Politics"?
+    // AppLocalizations.of(context)!.politics:
+    // category.CategoryTitle);
     // debugPrint(newsconsumerprovider.appBarTitle);
-
 
     //   setState(() {
     //     selectedCategory = category;
@@ -162,7 +152,7 @@ class BodyView extends StatelessWidget {
   }
 }
 
-BoxDecoration imageDecoration(){
+BoxDecoration imageDecoration() {
   return const BoxDecoration(
     image: DecorationImage(
         image: AssetImage(

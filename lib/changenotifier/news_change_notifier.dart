@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_route_bloc_clean_arch/View/actions.dart';
+import 'package:news_app_route_bloc_clean_arch/View/app_bars.dart';
 import 'package:news_app_route_bloc_clean_arch/View/home/category_grid_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../core/model/News.dart';
+
+import '../View/category/category_widget.dart';
 import '../View/category/search_widget.dart';
+import '../View/home/home_body.dart';
 import '../View/news/news_details.dart';
-import 'package:news_app_route_bloc_clean_arch/View/app_bars.dart';
-import 'package:news_app_route_bloc_clean_arch/View/actions.dart';
 import '../View/news/web_view.dart';
 import '../View/settings/language_bottom_sheet.dart';
-import '../View/home/home_view.dart';
-import '../View/category/category_widget.dart';
-import '../View/home/home_body.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../core/model/News.dart';
 
 class NewsChangeNotifier extends ChangeNotifier {
   String currentLocale = "en";
+
   bool isEnglish() {
     return currentLocale == "en";
   }
@@ -61,9 +61,22 @@ class NewsChangeNotifier extends ChangeNotifier {
         categoryTitle: "Science",
         categoryBackground: const Color.fromARGB(255, 242, 211, 82)),
   ];
-  static List<String> arCategTitles = ["الرياضية", "السياسية", "الصحية", "الأعمال", "البيئية", "العلمية" ];
-  static List<String> enCategTitles = ["Sports", "Politics", "Health", "Business",
-    "Enviroment", "Science"];
+  static List<String> arCategTitles = [
+    "الرياضية",
+    "السياسية",
+    "الصحية",
+    "الأعمال",
+    "البيئية",
+    "العلمية"
+  ];
+  static List<String> enCategTitles = [
+    "Sports",
+    "Politics",
+    "Health",
+    "Business",
+    "Enviroment",
+    "Science"
+  ];
   static List<String> catTitles = enCategTitles;
 
   static List<Category> categoriesAr = [
@@ -104,33 +117,41 @@ class NewsChangeNotifier extends ChangeNotifier {
         categoryBackground: const Color.fromARGB(255, 242, 211, 82)),
   ];
 
-
   void changeLocale(String newLocale) {
-    if(currentLocale == newLocale){return;}
+    if (currentLocale == newLocale) {
+      return;
+    }
     currentLocale = newLocale;
     changeCategoryList(newLocale);
-    if(newLocale =="ar"){changeAppBarTitle(appBar_Title:"الإعدادات");
+    if (newLocale == "ar") {
+      changeAppBarTitle(appBar_Title: "الإعدادات");
       langList = arlangs;
-      dropdownlan ="العربية";
-    }
-    else if(newLocale == "en"){changeAppBarTitle(appBar_Title:"Settings");
+      dropdownlan = "العربية";
+    } else if (newLocale == "en") {
+      changeAppBarTitle(appBar_Title: "Settings");
       langList = enlangs;
-      dropdownlan ="English";
-
-      }
+      dropdownlan = "English";
+    }
     notifyListeners();
   }
-  var catlist = categories;
-  void changeCategoryList(String locale){
-    if (locale == "ar") {catlist = categoriesAr; notifyListeners();}
-    if (locale == "en") {catlist = categories; notifyListeners();}
 
+  var catlist = categories;
+
+  void changeCategoryList(String locale) {
+    if (locale == "ar") {
+      catlist = categoriesAr;
+      notifyListeners();
+    }
+    if (locale == "en") {
+      catlist = categories;
+      notifyListeners();
+    }
   }
 
-
   int appBarTitleIndex = 0;
-  static const TextStyle appBarTitleStyle = TextStyle(fontWeight: FontWeight.w400, fontSize: 22);
-  Widget appBarTitle= const Text("Route News App", style: appBarTitleStyle);
+  static const TextStyle appBarTitleStyle =
+      TextStyle(fontWeight: FontWeight.w400, fontSize: 22);
+  Widget appBarTitle = const Text("Route News App", style: appBarTitleStyle);
   List<Widget> bodytabs = [
     BodyView(),
     CategoryNewsList(),
@@ -140,35 +161,40 @@ class NewsChangeNotifier extends ChangeNotifier {
     WebViewStack()
   ];
   News? news;
-  void changeNews(News selectedNews){
+
+  void changeNews(News selectedNews) {
     news = selectedNews;
-    changeAppBarTitle(appBar_Title:selectedNews.title!, appBarStyle: TextStyle(fontSize: 17));
+    changeAppBarTitle(
+        appBar_Title: selectedNews.title!,
+        appBarStyle: TextStyle(fontSize: 17));
     changeBodyWidgetIndex(4);
     notifyListeners();
   }
+
   Widget actions = SearchButtonAction();
   int selectedbodyIndex = 0;
   Widget bodyWidget = BodyView();
-  void changeAppBarTitle({String appBar_Title="", TextStyle appBarStyle = appBarTitleStyle}) {
-    if(appBar_Title=="Search"){
+
+  void changeAppBarTitle(
+      {String appBar_Title = "", TextStyle appBarStyle = appBarTitleStyle}) {
+    if (appBar_Title == "Search") {
       appBarTitle = appBartitleWidget();
       // changeActions(2);
-    }
-    else {
-      appBarTitle = Text(appBar_Title, style: appBarStyle)
-        ;
+    } else {
+      appBarTitle = Text(appBar_Title, style: appBarStyle);
     }
     notifyListeners();
   }
-  String searchTerm ="";
 
-  void changeSearch(String search){
-    searchTerm= search;
+  String searchTerm = "";
+
+  void changeSearch(String search) {
+    searchTerm = search;
     changeBodyWidgetIndex(3);
     notifyListeners();
   }
-  // void changeAppBarText(Widget widget) {}
 
+  // void changeAppBarText(Widget widget) {}
 
   Category? selectedcategory;
   var actionslistsList = [
@@ -177,12 +203,11 @@ class NewsChangeNotifier extends ChangeNotifier {
     NavigationControls(),
   ];
 
-
-  void changeActions(int index){
+  void changeActions(int index) {
     actions = actionslistsList[index];
     notifyListeners();
-
   }
+
   WebViewController controller = WebViewController();
 
   void changeSelectedWidget(Category category) {

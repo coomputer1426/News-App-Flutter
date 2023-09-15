@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:news_app_route_bloc_clean_arch/main.dart';
 
 void main() {

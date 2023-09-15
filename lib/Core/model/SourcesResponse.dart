@@ -8,9 +8,8 @@ class SourcesResponse {
   List<Source>? sources;
   String? message;
   String? code;
-  SourcesResponse({
-      this.status,
-      this.sources, this.message, this.code});
+
+  SourcesResponse({this.status, this.sources, this.message, this.code});
 
   SourcesResponse.fromJson(dynamic json) {
     status = json['status'];
@@ -23,11 +22,16 @@ class SourcesResponse {
       });
     }
   }
-SourcesResponse copyWith({  String? status,
-  List<Source>? sources,
-}) => SourcesResponse(  status: status ?? this.status,
-  sources: sources ?? this.sources,
-);
+
+  SourcesResponse copyWith({
+    String? status,
+    List<Source>? sources,
+  }) =>
+      SourcesResponse(
+        status: status ?? this.status,
+        sources: sources ?? this.sources,
+      );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
@@ -36,5 +40,4 @@ SourcesResponse copyWith({  String? status,
     }
     return map;
   }
-
 }

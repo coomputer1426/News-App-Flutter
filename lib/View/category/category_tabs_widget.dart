@@ -6,6 +6,7 @@ import '../news/news_list.dart';
 
 class CategoryTabsWidget extends StatefulWidget {
   List<Source> sources;
+
   CategoryTabsWidget(this.sources);
 
   @override
@@ -17,20 +18,22 @@ class _CategoryTabsWidgetState extends State<CategoryTabsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(padding: const EdgeInsets.all(8),
+    return Container(
+      padding: const EdgeInsets.all(8),
       child: DefaultTabController(
         length: widget.sources.length,
         child: Column(
           children: [
-            TabBar(onTap: (index){
-              setState(() {
-                debugPrint(widget.sources[index].id);
-              selectedIndex = index;
-              });
-            },
+            TabBar(
+              onTap: (index) {
+                setState(() {
+                  debugPrint(widget.sources[index].id);
+                  selectedIndex = index;
+                });
+              },
               tabs: widget.sources
                   .map((e) =>
-                    SourceTab(e, widget.sources.indexOf(e)==selectedIndex))
+                      SourceTab(e, widget.sources.indexOf(e) == selectedIndex))
                   // Tab(
                   //       text: e.name,
                   //     ))
