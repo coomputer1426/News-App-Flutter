@@ -1,0 +1,18 @@
+{
+    "settings": "Settings",
+    "route_app" : "Route News App",
+    "pick_category" : "Pick your category of Interest",
+    "lang" : "Language",
+    "english" : "English",
+    "arabic" : "Arabic",
+    "politics" : "Politics",
+    "science" : "Science",
+    "health" : "Health",
+    "business" : "Business",
+    "enviroment" : "Enviroment",
+    "sports" : "Sports",
+    "categories" : "Categories",
+    "catslist" : "Sports:Politics:Health:Business:Enviroment:Science",
+    "lang" : "Language"
+
+}
