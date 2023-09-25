@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Core/api/api_manager.dart';
+import '../../Core/model/newsResponse.dart';
 import '../../changenotifier/news_change_notifier.dart';
-import '../../core/api_manager.dart';
-import '../../core/model/NewsResponse.dart';
 import '../home/home_body.dart';
 import '../news/news_item.dart';
 
@@ -28,7 +28,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                   : ""),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }

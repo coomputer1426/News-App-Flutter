@@ -1,4 +1,4 @@
-import 'News.dart';
+import 'news.dart';
 
 /// status : "ok"
 /// totalResults : 6454

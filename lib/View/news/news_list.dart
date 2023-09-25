@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_route_bloc_clean_arch/View/home/home_body.dart';
 
-import '../../core/api_manager.dart';
-import '../../core/model/NewsResponse.dart';
-import '../../core/model/Source.dart';
+import '../../Core/api/api_manager.dart';
+import '../../Core/model/newsResponse.dart';
+import '../../Core/model/source.dart';
 import 'news_item.dart';
 
 class NewsList extends StatelessWidget {

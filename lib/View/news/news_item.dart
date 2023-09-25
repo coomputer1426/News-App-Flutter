@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Core/model/news.dart';
 import '../../changenotifier/news_change_notifier.dart';
-import '../../core/model/News.dart';
 
 class NewsItem extends StatelessWidget {
   // const NewsItem({Key? key}) : super(key: key);

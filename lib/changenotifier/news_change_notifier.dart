@@ -4,13 +4,13 @@ import 'package:news_app_route_bloc_clean_arch/View/app_bars.dart';
 import 'package:news_app_route_bloc_clean_arch/View/home/category_grid_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../Core/model/news.dart';
 import '../View/category/category_widget.dart';
 import '../View/category/search_widget.dart';
 import '../View/home/home_body.dart';
 import '../View/news/news_details.dart';
 import '../View/news/web_view.dart';
 import '../View/settings/language_bottom_sheet.dart';
-import '../core/model/News.dart';
 
 class NewsChangeNotifier extends ChangeNotifier {
   String currentLocale = "en";

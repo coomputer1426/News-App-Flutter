@@ -3,14 +3,46 @@ import 'package:news_app_route_bloc_clean_arch/View/category/category_tabs_widge
 import 'package:news_app_route_bloc_clean_arch/View/home/home_body.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Core/api/api_manager.dart';
 import '../../../changenotifier/news_change_notifier.dart';
-import '../../../core/api_manager.dart';
-import '../../../core/model/SourcesResponse.dart';
+import '../../Core/model/SourcesResponse.dart';
 
-class CategoryNewsList extends StatelessWidget {
+class CategoryNewsList extends StatefulWidget {
+  @override
+  State<CategoryNewsList> createState() => _CategoryNewsListState();
+}
+
+// class _CategoryNewsListState extends BaseState<CategoryNewsList, CategorySourcesAndNewsViewModel>
+//   implements CategoryNavigator{
+//   // const CategoryNewsList({Key? key}) : super(key: key);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       decoration: imageDecoration(),
+//       child: ChangeNotifierProvider<CategorySourcesAndNewsViewModel>(
+//         create: (context)=> viewModel,
+//         child: Container(
+//           child: Consumer<CategorySourcesAndNewsViewModel>(
+//             builder: (context, viewModel, _)=>
+//               viewModel.sources == null?
+//             const Center(child: CircularProgressIndicator(),):
+//             CategoryTabsWidget(viewModel.sources!),
+//           ),
+//         ) ,
+//       )
+//     );
+//   }
+//
+//   @override
+//   CategorySourcesAndNewsViewModel initViewModel() => CategorySourcesAndNewsViewModel();
+// }
+// class CategoryNewsList extends StatefulWidget {
+//   @override
+//   State<CategoryNewsList> createState() => _CategoryNewsListState();
+// }
+//
+class _CategoryNewsListState extends State<CategoryNewsList> {
   // const CategoryNewsList({Key? key}) : super(key: key);
-  // Category? category;
-  // CategoryNewsList({this.category});
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsChangeNotifier>(

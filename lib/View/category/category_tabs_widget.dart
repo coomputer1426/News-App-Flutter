@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_route_bloc_clean_arch/View/category/source_tab_item.dart';
 
-import '../../core/model/Source.dart';
+import '../../Core/model/source.dart';
 import '../news/news_list.dart';
 
 class CategoryTabsWidget extends StatefulWidget {
