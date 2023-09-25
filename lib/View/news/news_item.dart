@@ -63,7 +63,7 @@ class NewsItem extends StatelessWidget {
             Text(
               "${(duration.inHours ~/ 24)} day , ${duration.inHours % 24 > 0 ? duration.inHours % 24 : ""} ${duration.inHours % 24 > 0 ? " hour" : ""} ago",
               textAlign: TextAlign.end,
-              style: TextStyle(color: Color(0xFFA3A3A3)),
+              style: const TextStyle(color: Color(0xFFA3A3A3)),
             ),
 
             // Text(news.publishedAt!, textAlign: TextAlign.end,),

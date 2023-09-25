@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:get/get.dart';
+import 'package:news_app_route_bloc_clean_arch/navigator_key.dart';
 import 'package:provider/provider.dart';
 
 import 'View/home/home_view.dart';
@@ -10,7 +10,6 @@ import 'View/snack_bar.dart';
 import 'View/splash_view.dart';
 import 'changenotifier/news_change_notifier.dart';
 import 'core/style/theme.dart';
-import 'locale/locale_controller.dart';
 
 void main() {
   WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
@@ -31,10 +30,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.put(MyLocalController());
+    // Get.put(MyLocalController());
     var newsprovider = Provider.of<NewsChangeNotifier>(context);
     // return GetMaterialApp(
     return MaterialApp(
+      navigatorKey: navigatorKey,
       scaffoldMessengerKey: scaffoldkey,
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       // translations: MyLocale(),
       debugShowCheckedModeBanner: false,
       routes: {
-        SplashView.routeName: (context) => SplashView(),
+        SplashView.routeName: (context) => const SplashView(),
         HomeView.routeName: (context) => HomeView()
       },
       // initialRoute: SplashView.routeName,

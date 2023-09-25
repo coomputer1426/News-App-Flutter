@@ -82,7 +82,7 @@ class SettingsTab extends StatelessWidget {
 
   void showLanguageBottomSheet() {
     showModalBottomSheet(
-        context: navigatorkey.currentContext!,
+        context: navigatorKey.currentContext!,
         builder: (buildContext) {
           return LanguageButtomSheet();
           // return Text("data");

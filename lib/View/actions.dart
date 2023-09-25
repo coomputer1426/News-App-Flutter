@@ -47,6 +47,7 @@ class NavigationControls extends StatelessWidget {
               if (await newsProvider.controller.canGoBack()) {
                 await newsProvider.controller.goBack();
               } else {
+                newsProvider.changeNews(newsProvider.news!);
                 messanger.showSnackBar(const SnackBar(
                   content: Text("No Back History Item"),
                 ));

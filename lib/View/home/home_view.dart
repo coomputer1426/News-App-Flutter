@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get/get.dart';
-import 'package:news_app_route_bloc_clean_arch/locale/locale_controller.dart';
 import 'package:provider/provider.dart';
 
 import '../../changenotifier/news_change_notifier.dart';
@@ -12,7 +10,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyLocalController langcontroller = Get.find();
+    // MyLocalController langcontroller = Get.find();
 
     var newsprovider = Provider.of<NewsChangeNotifier>(context);
     return Scaffold(
